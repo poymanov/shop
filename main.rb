@@ -6,32 +6,20 @@ require_relative "lib/book"
 
 products = []
 
-leon = Film.new(
-  name: "Фильм «Леон»",
-  year: 1994,
-  director: "Люк Бессон",
-  price: 990,
-  amount: 5
-)
+current_path = File.dirname(__FILE__)
 
-fool = Film.new(
-  name: "Фильм «Дурак»",
-  year: 2014,
-  director: "Юрий Быков",
-  price: 390,
-  amount: 1
-)
-
-idiot = Book.new(
-  name: "Книга «Идиот»",
-  genre: "роман",
-  author: "Федор Достоевский",
-  price: 1500,
-  amount: 10
-)
+leon = Film.from_file(current_path + "/data/films/01.txt")
+fool = Film.from_file(current_path + "/data/films/02.txt")
+idiot = Book.from_file(current_path + "/data/books/01.txt")
 
 products << leon
 products << fool
 products << idiot
 
 products.each { |product| puts product }
+
+begin
+  Product.from_file(current_path + '/data/films/01.txt')
+rescue NotImplementedError
+  puts 'Метод класса Product.from_file не реализован'
+end
