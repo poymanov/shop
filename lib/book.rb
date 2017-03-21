@@ -28,4 +28,12 @@ class Book < Product
        abort "Не найден файл для загрузки"
     end
   end
+
+  def update(params)
+    super
+
+    @title = params[:title] if params[:title]
+    @genre = params[:genre] if params[:genre]
+    @author = params[:author] if params[:author]
+  end
 end

@@ -13,6 +13,8 @@ class ProductCollection
         classname = Film
       elsif path == "books"
         classname = Book
+      elsif path == "disk"
+        classname = Disk
       else
         next
       end

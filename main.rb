@@ -4,6 +4,7 @@ require_relative "lib/product_collection"
 require_relative "lib/product"
 require_relative "lib/film"
 require_relative "lib/book"
+require_relative "lib/disk"
 
 products = []
 
