@@ -38,12 +38,12 @@ class ProductCollection
 
     # По цене
     case param[:by]
-      when :price
-        @products.sort_by! { |product| product.price }
-      when :amount
-        @products.sort_by! { |product| product.amount}
-      when :name
-        @products.sort_by! { |product| product.to_s }
+    when :price
+      @products.sort_by! { |product| product.price }
+    when :amount
+      @products.sort_by! { |product| product.amount }
+    when :name
+      @products.sort_by! { |product| product.to_s }
     end
 
     @products.reverse! if param[:order] == :asc

@@ -19,10 +19,4 @@ products.sort!(by: :price)
 # по остатку
 products.sort!(by: :amount)
 
-# по наименованию (возрастание)
-products.sort!(by: :name_asc)
-
-# по наименованию (убывание)
-products.sort!(by: :name_desc, order: :asc)
-
 puts products.to_a
