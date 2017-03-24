@@ -14,7 +14,7 @@ products_size = products_array.size
 
 product_input = nil
 
-user_products = []
+user_products = {}
 total = 0
 
 until product_input == 0
@@ -37,12 +37,19 @@ until product_input == 0
   end
 
   # Завершение покупок
-  if product_input == 0
-    break
-  end
+  next if product_input == 0
 
   # Выбранный пользователем продукт
   product_choice = products_array[product_input - 1]
+
+  # Проверка остатка
+  if product_choice.amount - 1 < 0
+    puts "Товар недоступен для выбора"
+    puts
+    next
+  end
+
+  product_choice.amount -= 1
 
   puts
   puts "Вы выбрали #{product_choice}"
@@ -53,14 +60,16 @@ until product_input == 0
   puts "Всего товаров на сумму: #{total} руб."
   puts
 
-  user_products << product_choice.to_s
+  user_products[product_choice.name] ||= 0
+  user_products[product_choice.name] += 1
+
 end
 
 puts "Вы купили:"
 puts
 
-user_products.each do |item|
-  puts item
+user_products.each_pair do |key, value|
+  puts "#{key} - #{value} шт."
 end
 
 puts
